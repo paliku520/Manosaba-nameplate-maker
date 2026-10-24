@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark" data-accent="ema">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>魔法少女的魔女审判 · 名片合成</title>
+  <script>
+    // 在样式表加载前应用已保存的深浅色，避免刷新时闪一下默认主题
+    (function () {
+      try {
+        var prefs = JSON.parse(localStorage.getItem('manosaba.nameplate.maker.v1') || '{}');
+        document.documentElement.dataset.theme = prefs.theme === 'light' ? 'light' : 'dark';
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <button type="button" class="theme-btn" id="np-theme-btn">
+        <span class="icon-sun" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+               stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41
+                     M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+          </svg>
+        </span>
+        <span class="icon-moon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+          </svg>
+        </span>
+      </button>
+      <div class="lang-field">
+        <span data-i18n="np.lang_label">语言</span>
+        <div class="dd-slot" id="np-lang-dd"></div>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="hero-title">
+        <img class="hero-logo" id="np-game-logo" alt="" hidden>
+        <p class="hero-game" data-i18n="np.game_title"></p>
+      </div>
+      <h1 data-i18n="np.title">名片合成</h1>
+      <p class="hero-desc" data-i18n="np.desc"></p>
+    </header>
+
+    <main class="card">
+      <div class="np-body">
+        <section class="np-form" data-i18n-aria="np.title">
+          <div class="np-fields">
+            <label class="np-field">
+              <span class="np-label" data-i18n="np.surname">姓氏</span>
+              <input id="np-surname" class="np-input" type="text" maxlength="16"
+                     autocomplete="off" spellcheck="false" data-i18n-placeholder="np.surname_ph">
+            </label>
+            <label class="np-field">
+              <span class="np-label" data-i18n="np.given">名字</span>
+              <input id="np-given" class="np-input" type="text" maxlength="16"
+                     autocomplete="off" spellcheck="false" data-i18n-placeholder="np.given_ph">
+            </label>
+          </div>
+          <p class="np-example" data-i18n="np.name_example"></p>
+
+          <div class="np-row np-row-inline">
+            <span class="np-label" data-i18n="np.font">字体</span>
+            <div class="dd-slot dd-slot-font" id="np-font-dd"></div>
+          </div>
+          <p class="np-tip" data-i18n="np.font_hint"></p>
+
+          <div class="np-row np-row-inline">
+            <span class="np-label" data-i18n="np.head_color">首字颜色</span>
+            <button type="button" class="np-color-btn" id="np-color-btn"
+                    aria-haspopup="dialog" aria-controls="np-color-modal">
+              <span class="np-swatch" id="np-color-swatch"></span>
+              <span class="np-color-name" id="np-color-name"></span>
+              <span class="cp-caret" aria-hidden="true">
+                <svg viewBox="0 0 16 16" width="12" height="12">
+                  <path d="M11.5 1.5l3 3L5.5 13.5 2 14l.5-3.5L11.5 1.5zM9.5 3.5l3 3"
+                        stroke="currentColor" stroke-width="1.4" fill="none"
+                        stroke-linejoin="round" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+          </div>
+
+          <p class="np-status" id="np-status" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="np-preview" data-i18n-aria="np.preview_alt">
+          <div class="np-stage">
+            <div class="np-stage-empty" id="np-stage-empty" data-i18n="np.empty_preview"></div>
+            <img id="np-img" alt="" hidden>
+          </div>
+          <div class="np-actions">
+            <button type="button" class="btn primary" id="np-btn-generate"
+                    data-i18n="np.generate" disabled></button>
+            <button type="button" class="btn" id="np-btn-copy"
+                    data-i18n="np.copy" disabled></button>
+            <button type="button" class="btn" id="np-btn-save"
+                    data-i18n="np.save" disabled></button>
+            <span class="np-size" id="np-size"></span>
+          </div>
+          <p class="np-hint" id="np-dirty-hint" data-i18n="np.generate_hint" hidden></p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div class="foot-disclaimer">
+          <h2 class="foot-title" data-i18n="np.footer_title"></h2>
+          <p class="foot-text" data-i18n="np.disclaimer"></p>
+          <p class="foot-text" data-i18n="np.footer_note"></p>
+        </div>
+        <div class="foot-meta">
+          <span data-i18n="np.copyright"></span>
+          <span class="foot-layout" data-i18n="np.layout_note"></span>
+          <a class="foot-license" href="./LICENSE" target="_blank" rel="noopener"
+             data-i18n="np.license" data-i18n-title="np.license_title"></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- 首字颜色：角色主题色 + 坐标取色板 + hex / RGB 输入 -->
+  <div class="modal-backdrop" id="np-color-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="np-color-title">
+      <h2 class="modal-title" id="np-color-title" data-i18n="np.head_color">首字颜色</h2>
+      <div class="np-color-modal">
+        <div class="np-color-top">
+          <span class="np-color-preview" id="np-color-preview"></span>
+          <input type="text" class="np-input np-color-hex" id="np-color-hex"
+                 maxlength="18" spellcheck="false" autocomplete="off"
+                 aria-label="#RRGGBB">
+        </div>
+        <p class="np-color-hint" data-i18n="np.color_input_hint"></p>
+        <div class="np-color-rgb">
+          <label class="np-rgb-field">R
+            <input type="text" class="np-input np-rgb-input" id="np-color-r"
+                   maxlength="3" inputmode="numeric" autocomplete="off" spellcheck="false">
+          </label>
+          <label class="np-rgb-field">G
+            <input type="text" class="np-input np-rgb-input" id="np-color-g"
+                   maxlength="3" inputmode="numeric" autocomplete="off" spellcheck="false">
+          </label>
+          <label class="np-rgb-field">B
+            <input type="text" class="np-input np-rgb-input" id="np-color-b"
+                   maxlength="3" inputmode="numeric" autocomplete="off" spellcheck="false">
+          </label>
+        </div>
+        <div class="np-color-grid" id="np-color-palette" role="group" data-i18n-aria="np.palette"></div>
+        <div class="np-color-plane" id="np-color-plane">
+          <span class="np-color-cursor" id="np-color-cursor"></span>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn" id="np-color-cancel" data-i18n="np.cancel">取消</button>
+        <button type="button" class="btn primary" id="np-color-ok" data-i18n="np.confirm">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="np-toast" role="status" aria-live="polite"></div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
