@@ -11,6 +11,12 @@
 > **声明**：排版参数解析自游戏文件，但受字体渲染差异影响，不保证与游戏原作 100% 完全一致。
 > 源代码遵循 [MIT License](./LICENSE) 开源协议。
 
+## 在线访问
+| 站点 | 地址 |
+| --- | --- |
+| cloudflare | [manosaba-nameplate.pages.dev/](https://manosaba-nameplate.pages.dev/) |
+| github.io | [paliku520.github.io/Manosaba-nameplate-maker/](https://paliku520.github.io/Manosaba-nameplate-maker/) |
+
 ## 功能
 
 ### 排版
