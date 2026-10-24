@@ -6,7 +6,7 @@
 | 仓库 | 说明 |
 | --- | --- |
 | [paliku520/Manosaba-nameplate-maker](https://github.com/paliku520/Manosaba-nameplate-maker) | 本项目：浏览器端名片合成器（纯静态） |
-| [paliku520/Manosaba-character-extracter](https://github.com/paliku520/Manosaba-character-extracter) | 原项目：角色立绘 / 名片合成桌面工具（Python + PyWebView） |
+| [paliku520/Manosaba-character-extracter](https://github.com/paliku520/Manosaba-character-extracter) | 原项目：角色立绘 / 名片合成桌面工具（Python + Electron） |
 
 > **声明**：排版参数解析自游戏文件，但受字体渲染差异影响，不保证与游戏原作 100% 完全一致。
 > 源代码遵循 [MIT License](./LICENSE) 开源协议。
