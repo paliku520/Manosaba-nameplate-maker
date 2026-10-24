@@ -79,6 +79,7 @@ assets/fonts/TsukushiMincho.otf
 assets/fonts/SourceHanSerifSC.otf
 assets/game_titles/TitleLogo@ZhHans.png   # 中文
 assets/game_titles/TitleLogo@Ja.png       # 其他语言（日文 / 英文等）
+assets/favicon.ico                        # 站点图标（192 × 192）
 ```
 
 标题图按语言选择：中文使用 `TitleLogo@ZhHans.png`，其余语言统一使用
@@ -123,6 +124,7 @@ manosaba-nameplate-maker/
 │  └─ app.js         # Canvas 渲染、颜色模态、导出、状态管理
 ├─ assets/
 │  ├─ NamePlateBase.png
+│  ├─ favicon.ico
 │  ├─ game_titles/
 │  │  ├─ TitleLogo@ZhHans.png
 │  │  └─ TitleLogo@Ja.png
