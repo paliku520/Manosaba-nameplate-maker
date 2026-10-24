@@ -585,21 +585,21 @@ html[data-theme="light"] .theme-btn .icon-moon { display: flex; }
 
 .foot-layout { font-family: var(--mono); }
 
-.foot-license {
+.foot-link {
   color: var(--accent-text);
   text-decoration: none;
   transition: text-decoration-color 0.15s ease;
 }
 
 /* 下划线只跟随文字宽度（不用 border-bottom，避免被 flex 拉伸成整行） */
-.foot-license:hover,
-.foot-license:focus-visible {
+.foot-link:hover,
+.foot-link:focus-visible {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
-.foot-license:focus-visible {
+.foot-link:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 3px;

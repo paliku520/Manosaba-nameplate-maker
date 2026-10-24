@@ -63,6 +63,8 @@
       'np.copyright': '© 2024 Re,AER LLC. / Acacia — 游戏名称、角色与素材版权归原作者所有。',
       'np.license': '遵循MIT License开源协议',
       'np.license_title': '查看 MIT License 全文',
+      'np.repository': 'GitHub · paliku520/Manosaba-nameplate-maker',
+      'np.repository_title': '在 GitHub 打开本项目仓库',
       'np.layout_note': '底板 601 × 289 · 基准字号 136',
     },
 
@@ -115,6 +117,8 @@
       'np.copyright': '© 2024 Re,AER LLC. / Acacia — ゲーム名・キャラクター・素材の権利は原作者に帰属します。',
       'np.license': 'MIT License で公開されています',
       'np.license_title': 'MIT License の全文を表示',
+      'np.repository': 'GitHub · paliku520/Manosaba-nameplate-maker',
+      'np.repository_title': 'GitHub でこのプロジェクトのリポジトリを開く',
       'np.layout_note': 'ベース 601 × 289 · 基準文字サイズ 136',
     },
 
@@ -167,6 +171,8 @@
       'np.copyright': '© 2024 Re,AER LLC. / Acacia — Game title, characters and assets belong to their respective owners.',
       'np.license': 'Released under the MIT License',
       'np.license_title': 'View the full MIT License',
+      'np.repository': 'GitHub · paliku520/Manosaba-nameplate-maker',
+      'np.repository_title': 'Open this project on GitHub',
       'np.layout_note': 'Base 601 × 289 · Base font size 136',
     },
   };
