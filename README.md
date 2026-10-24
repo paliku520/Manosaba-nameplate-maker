@@ -3,10 +3,6 @@
 从原项目 **[Manosaba-character-extracter](https://github.com/paliku520/Manosaba-character-extracter)**（魔法少女的魔女审判角色立绘合成器）中剥离出的**纯静态名片合成器**：HTML + CSS + 原生 JavaScript，
 没有任何后端、构建步骤或外部 CDN 依赖，所有合成都在浏览器 Canvas 中完成。
 
-## 效果样例：
-
-![样例-樱羽艾玛](assets\example.png)
-
 | 仓库 | 说明 |
 | --- | --- |
 | [paliku520/Manosaba-nameplate-maker](https://github.com/paliku520/Manosaba-nameplate-maker) | 本项目：浏览器端名片合成器（纯静态） |
